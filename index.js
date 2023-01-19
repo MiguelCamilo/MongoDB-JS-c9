@@ -24,10 +24,9 @@ const movie1 = {
 // adds a document 
 const addDoc = async item  => {
     await collection.insertOne(item)
-        console.log('Added Document ', item)
+        console.log('Added Document ')
 }
 
-await addDoc(movie1)
 
 
 
@@ -43,7 +42,6 @@ const updateDoc = async (docId, fieldName, fieldValue) => {
     const result = await collection.findOneAndUpdate(updateID, updateQuery)
 
 }
-await updateDoc('63c999662f3e229d630a38fc','title','World of Wars')
 
 
 //! DELETE
@@ -54,7 +52,6 @@ const deleteDoc = async (docID) => {
 
 }
 
-await deleteDoc('63c999662f3e229d630a38fc')
 
 
 
@@ -66,7 +63,10 @@ const getDocListing = async limit => {
     console.table(result)
 }
 
+// best practice is to have all func invoked at the end
+await addDoc(movie1)
+await updateDoc('63c999662f3e229d630a38fc','title','World of Wars')
+await deleteDoc('63c9b9e059eb36f4525baa5a')
 await getDocListing(0) // the int allows you to limit the amount of data to see. 0 shows all.
-
 
 client.close() // closes connection
