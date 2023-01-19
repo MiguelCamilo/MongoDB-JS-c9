@@ -31,11 +31,20 @@ const chair = {
     warranty: '2 years'
 }
 
+const deskmat = {
+    name: 'Ergo Matt',
+    brand: 'Autonomous',
+    color: 'Grau',
+    price: 69.00,
+    warranty: '2 years'
+}
+
 // adds an object to the collection using async await function
 // async says don't move on until this line is complete
-async function addOneItem (item) {
-    db.collection('items').insertOne(item)   
+const addOneItem = async (item) => {
+    await db.collection('items').insertOne() // add item
 }
 
 addOneItem(stool)
 addOneItem(chair)
+addOneItem(deskmat)
